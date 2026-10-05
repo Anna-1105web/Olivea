@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8EDD6"/>
+      <stop offset="1" stop-color="#B9C78A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <g fill="none" stroke="#556233" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" opacity=".55">
+    <path d="M300 320 L400 235 L500 320 V420 H300 Z"/>
+    <path d="M375 420 V360 H425 V420"/>
+  </g>
+  <text x="400" y="480" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="700" fill="#3F4927" opacity=".7">Olivea Estates</text>
+</svg>

@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en" translate="no" class="scroll-smooth notranslate">
+<head>
+<meta charset="UTF-8" />
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Olivea Estates — Modern Houses & Villas</title>
+<meta name="description" content="Olivea Estates — premium modern houses and villas for sale and rent." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          olive: {
+            50: '#F4F6EC', 100: '#E8EDD6', 200: '#D3DCB0', 300: '#B9C78A',
+            400: '#9FB16A', 500: '#859752', 600: '#6C7C40', 700: '#556233',
+            800: '#3F4927', 900: '#2B321B'
+          },
+          ink: { DEFAULT: '#16181A', soft: '#3A3D40', mute: '#6E7276' },
+          paper: '#F5F5F1',
+          line: '#E6E6E0'
+        },
+        fontFamily: { sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
+        boxShadow: {
+          soft: '0 1px 2px rgba(22,24,26,.04), 0 8px 24px -12px rgba(22,24,26,.12)',
+          lift: '0 2px 4px rgba(22,24,26,.04), 0 24px 48px -20px rgba(22,24,26,.22)'
+        }
+      }
+    }
+  };
+</script>
+<script src="https://unpkg.com/lucide@0.452.0/dist/umd/lucide.min.js"></script>
+
+<style>
+  body { font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #D3DCB0; color: #16181A; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: .08s; } .reveal-d2 { transition-delay: .16s; } .reveal-d3 { transition-delay: .24s; }
+
+  /* Card entrance */
+  @keyframes cardIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+  .card-in { animation: cardIn .55s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* Hero zoom */
+  @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+  .hero-zoom { animation: heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* Map pin pulse */
+  @keyframes pulse-ring { 0% { r: 14; opacity: .55; } 100% { r: 34; opacity: 0; } }
+  .pin-pulse { animation: pulse-ring 1.8s ease-out infinite; }
+
+  /* FAQ accordion */
+  .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
+  .faq-item.open .faq-body { grid-template-rows: 1fr; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: #6C7C40; color: #fff; }
+
+  /* Selects */
+  select { -webkit-appearance: none; appearance: none; }
+
+  /* Hide scrollbar for snap rows */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  /* Spotlight fade */
+  .fade-swap { transition: opacity .35s ease; }
+
+  .toast-show { opacity: 1 !important; transform: translate(-50%, 0) !important; }
+</style>
+</head>
+
+<body class="bg-paper text-ink notranslate" translate="no">
+
+<!-- ============ HEADER ============ -->
+<header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div id="headerBar" class="mt-3 flex h-16 items-center justify-between rounded-2xl bg-white/75 backdrop-blur-xl border border-white/60 px-3 sm:px-4 shadow-soft">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid h-9 w-9 place-items-center rounded-xl bg-olive-600 text-white transition-transform duration-300 group-hover:rotate-[-8deg]">
+          <i data-lucide="house" class="h-[18px] w-[18px]"></i>
+        </span>
+        <span class="whitespace-nowrap text-[17px] font-extrabold tracking-tight" translate="no">Olivea<span class="text-olive-600">.</span></span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1 whitespace-nowrap text-[14px] font-medium text-ink-soft">
+        <a href="#services" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_services">Services</a>
+        <a href="#map" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_map">Locations</a>
+        <a href="#catalog" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_properties">Properties</a>
+        <a href="#reviews" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_reviews">Reviews</a>
+        <a href="#faq" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_faq">FAQ</a>
+        <a href="#contact" class="rounded-full px-4 py-2 hover:bg-paper hover:text-ink transition" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <div class="lang-switch hidden sm:flex items-center rounded-full bg-paper p-1 text-[12px] font-bold">
+          <button data-lang="en" class="lang-btn rounded-full px-2.5 py-1.5 transition">EN</button>
+          <button data-lang="uk" class="lang-btn rounded-full px-2.5 py-1.5 transition">UA</button>
+          <button data-lang="ru" class="lang-btn rounded-full px-2.5 py-1.5 transition">RU</button>
+        </div>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-ink px-4 py-2.5 text-[13px] font-semibold text-white transition hover:bg-olive-700 hover:-translate-y-0.5">
+          <span data-i18n="btn_consult">Get consultation</span>
+          <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+        </a>
+        <button id="burger" class="lg:hidden grid h-10 w-10 place-items-center rounded-xl bg-paper hover:bg-olive-100 transition" aria-label="Menu">
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="lg:hidden hidden mt-2 rounded-2xl bg-white/95 backdrop-blur-xl border border-line p-3 shadow-lift">
+      <nav class="grid text-[15px] font-semibold">
+        <a href="#services" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_services">Services</a>
+        <a href="#map" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_map">Locations</a>
+        <a href="#catalog" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_properties">Properties</a>
+        <a href="#reviews" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_reviews">Reviews</a>
+        <a href="#faq" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_faq">FAQ</a>
+        <a href="#contact" class="m-link rounded-xl px-4 py-3 hover:bg-paper" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="mt-2 flex items-center justify-between gap-3 border-t border-line pt-3 px-1">
+        <div class="lang-switch flex items-center rounded-full bg-paper p-1 text-[12px] font-bold">
+          <button data-lang="en" class="lang-btn rounded-full px-3 py-1.5 transition">EN</button>
+          <button data-lang="uk" class="lang-btn rounded-full px-3 py-1.5 transition">UA</button>
+          <button data-lang="ru" class="lang-btn rounded-full px-3 py-1.5 transition">RU</button>
+        </div>
+        <a href="#contact" class="m-link inline-flex items-center gap-1.5 rounded-full bg-olive-600 px-4 py-2.5 text-[13px] font-semibold text-white">
+          <span data-i18n="btn_consult">Get consultation</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="pt-[92px] px-3 sm:px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative overflow-hidden rounded-[28px] min-h-[600px] lg:min-h-[660px]">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80"
+           alt="Modern villa at dusk" class="hero-zoom absolute inset-0 h-full w-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
+
+      <!-- Floating featured card -->
+      <div class="hidden lg:block absolute right-8 top-8 w-[280px] rounded-2xl bg-white/90 backdrop-blur-xl p-3 shadow-lift reveal reveal-d3">
+        <div class="relative overflow-hidden rounded-xl">
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80" class="h-32 w-full object-cover" alt="" />
+          <span class="absolute left-2 top-2 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-bold text-olive-700" data-i18n="hc_label">Featured this week</span>
+        </div>
+        <div class="px-1 pt-3 pb-1">
+          <div class="flex items-center justify-between">
+            <p class="font-bold text-[15px]">Glasshouse Residence</p>
+            <i data-lucide="arrow-up-right" class="h-4 w-4 text-olive-600"></i>
+          </div>
+          <p class="mt-0.5 flex items-center gap-1 text-[12px] text-ink-mute"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i><span data-i18n="city_malibu">Malibu</span></p>
+          <p class="mt-2 text-[17px] font-extrabold">$4,850,000</p>
+        </div>
+      </div>
+
+      <div class="relative z-10 flex min-h-[600px] lg:min-h-[660px] flex-col justify-end p-6 pb-44 sm:p-10 sm:pb-40 lg:p-14 lg:pb-36">
+        <div class="max-w-3xl">
+          <div class="reveal inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[12px] font-semibold text-white backdrop-blur-md">
+            <span class="h-1.5 w-1.5 rounded-full bg-olive-300"></span>
+            <span data-i18n="hero_badge">Premium real estate since 2009</span>
+          </div>
+          <h1 class="reveal reveal-d1 mt-5 text-[40px] leading-[1.05] sm:text-6xl lg:text-[76px] font-bold tracking-[-0.03em] text-white"
+              data-i18n-html="hero_title">Find the home your <span class="text-olive-300">future</span> deserves</h1>
+          <p class="reveal reveal-d2 mt-5 max-w-xl text-[15px] sm:text-[17px] leading-relaxed text-white/80" data-i18n="hero_sub">
+            We curate modern houses and villas built with honest materials, natural light and room to breathe — and guide you from the first viewing to the keys.
+          </p>
+          <div class="reveal reveal-d3 mt-7 flex items-center gap-3">
+            <div class="flex -space-x-2.5">
+              <img class="h-9 w-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="" />
+              <img class="h-9 w-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2a?auto=format&fit=crop&w=100&q=80" alt="" />
+              <img class="h-9 w-9 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="" />
+              <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-white bg-olive-500 text-white"><i data-lucide="plus" class="h-4 w-4"></i></span>
+            </div>
+            <p class="text-[13px] text-white/85"><b class="text-white">2,400+</b> <span data-i18n="hc_happy">happy homeowners</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating search -->
+    <div class="relative z-20 -mt-32 sm:-mt-28 mx-2 sm:mx-6 lg:mx-12 reveal">
+      <form id="heroSearch" class="rounded-[22px] bg-white p-4 sm:p-6 shadow-lift border border-line/60">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 sm:mb-5">
+          <div class="flex rounded-full bg-paper p-1 text-[13px] font-bold" id="dealTabs">
+            <button type="button" data-deal="sale" class="deal-btn rounded-full px-5 py-2 transition bg-ink text-white" data-i18n="tab_buy">Buy</button>
+            <button type="button" data-deal="rent" class="deal-btn rounded-full px-5 py-2 transition text-ink-soft" data-i18n="tab_rent">Rent</button>
+          </div>
+          <p class="hidden md:flex items-center gap-1.5 text-[13px] text-ink-mute"><i data-lucide="shield-check" class="h-4 w-4 text-olive-600"></i><span data-i18n="adv1_t">Verified listings</span></p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1fr_auto] gap-3">
+          <label class="block">
+            <span class="mb-1.5 flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wide text-ink-mute"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i><span data-i18n="f_location">Location</span></span>
+            <div class="relative">
+              <select id="sCity" class="w-full rounded-xl bg-paper px-4 py-3.5 pr-10 text-[14px] font-semibold outline-none ring-olive-400 focus:ring-2 transition cursor-pointer hover:bg-olive-50">
+                <option value="all" data-i18n="f_any_location">All locations</option>
+                <option value="malibu" data-i18n="city_malibu">Malibu</option>
+                <option value="aspen" data-i18n="city_aspen">Aspen</option>
+                <option value="miami" data-i18n="city_miami">Miami</option>
+                <option value="austin" data-i18n="city_austin">Austin</option>
+                <option value="seattle" data-i18n="city_seattle">Seattle</option>
+                <option value="scottsdale" data-i18n="city_scottsdale">Scottsdale</option>
+              </select>
+              <i data-lucide="chevron-down" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+            </div>
+          </label>
+          <label class="block">
+            <span class="mb-1.5 flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wide text-ink-mute"><i data-lucide="house" class="h-3.5 w-3.5"></i><span data-i18n="f_type">Property type</span></span>
+            <div class="relative">
+              <select id="sType" class="w-full rounded-xl bg-paper px-4 py-3.5 pr-10 text-[14px] font-semibold outline-none ring-olive-400 focus:ring-2 transition cursor-pointer hover:bg-olive-50">
+                <option value="all" data-i18n="f_any_type">Any type</option>
+                <option value="villa" data-i18n="type_villa">Villa</option>
+                <option value="house" data-i18n="type_house">House</option>
+                <option value="apartment" data-i18n="type_apartment">Apartment</option>
+                <option value="penthouse" data-i18n="type_penthouse">Penthouse</option>
+              </select>
+              <i data-lucide="chevron-down" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+            </div>
+          </label>
+          <label class="block">
+            <span class="mb-1.5 flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wide text-ink-mute"><i data-lucide="wallet" class="h-3.5 w-3.5"></i><span data-i18n="f_budget">Budget</span></span>
+            <div class="relative">
+              <select id="sBudget" class="w-full rounded-xl bg-paper px-4 py-3.5 pr-10 text-[14px] font-semibold outline-none ring-olive-400 focus:ring-2 transition cursor-pointer hover:bg-olive-50">
+                <option value="all" data-i18n="f_any_budget">Any budget</option>
+                <option value="b1" data-i18n="b1">Up to $1M</option>
+                <option value="b2" data-i18n="b2">$1M – $3M</option>
+                <option value="b3" data-i18n="b3">$3M+</option>
+              </select>
+              <i data-lucide="chevron-down" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+            </div>
+          </label>
+          <label class="block">
+            <span class="mb-1.5 flex items-center gap-1.5 text-[12px] font-bold uppercase tracking-wide text-ink-mute"><i data-lucide="bed-double" class="h-3.5 w-3.5"></i><span data-i18n="f_rooms">Bedrooms</span></span>
+            <div class="relative">
+              <select id="sRooms" class="w-full rounded-xl bg-paper px-4 py-3.5 pr-10 text-[14px] font-semibold outline-none ring-olive-400 focus:ring-2 transition cursor-pointer hover:bg-olive-50">
+                <option value="0" data-i18n="r_any">Any</option>
+                <option value="2">2+</option>
+                <option value="3">3+</option>
+                <option value="4">4+</option>
+                <option value="5">5+</option>
+              </select>
+              <i data-lucide="chevron-down" class="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+            </div>
+          </label>
+          <button type="submit" class="group sm:col-span-2 lg:col-span-1 self-end inline-flex h-[50px] items-center justify-center gap-2 rounded-xl bg-olive-600 px-7 text-[14px] font-bold text-white transition hover:bg-olive-700 hover:shadow-lg hover:shadow-olive-600/30 active:scale-[.98]">
+            <i data-lucide="search" class="h-[18px] w-[18px] transition group-hover:scale-110"></i>
+            <span data-i18n="btn_search">Search</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="px-4 sm:px-6 pt-20 lg:pt-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div class="reveal group rounded-2xl bg-white p-5 sm:p-7 shadow-soft border border-line/60 transition hover:-translate-y-1 hover:shadow-lift">
+        <div class="flex items-center justify-between">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-50 text-olive-700 transition group-hover:bg-olive-600 group-hover:text-white"><i data-lucide="users" class="h-5 w-5"></i></span>
+        </div>
+        <p class="mt-5 text-3xl sm:text-[42px] font-extrabold tracking-tight"><span data-count="2400" data-suffix="+">0</span></p>
+        <p class="mt-1 text-[13px] sm:text-[14px] text-ink-mute" data-i18n="stat1">Satisfied clients</p>
+      </div>
+      <div class="reveal reveal-d1 group rounded-2xl bg-white p-5 sm:p-7 shadow-soft border border-line/60 transition hover:-translate-y-1 hover:shadow-lift">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-50 text-olive-700 transition group-hover:bg-olive-600 group-hover:text-white"><i data-lucide="building-2" class="h-5 w-5"></i></span>
+        <p class="mt-5 text-3xl sm:text-[42px] font-extrabold tracking-tight"><span data-count="850" data-suffix="+">0</span></p>
+        <p class="mt-1 text-[13px] sm:text-[14px] text-ink-mute" data-i18n="stat2">Properties in catalog</p>
+      </div>
+      <div class="reveal reveal-d2 group rounded-2xl bg-white p-5 sm:p-7 shadow-soft border border-line/60 transition hover:-translate-y-1 hover:shadow-lift">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-50 text-olive-700 transition group-hover:bg-olive-600 group-hover:text-white"><i data-lucide="trophy" class="h-5 w-5"></i></span>
+        <p class="mt-5 text-3xl sm:text-[42px] font-extrabold tracking-tight"><span data-count="36" data-suffix="">0</span></p>
+        <p class="mt-1 text-[13px] sm:text-[14px] text-ink-mute" data-i18n="stat3">Industry awards</p>
+      </div>
+      <div class="reveal reveal-d3 group rounded-2xl bg-ink p-5 sm:p-7 shadow-soft text-white transition hover:-translate-y-1 hover:shadow-lift">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-olive-300 transition group-hover:bg-olive-500 group-hover:text-white"><i data-lucide="calendar" class="h-5 w-5"></i></span>
+        <p class="mt-5 text-3xl sm:text-[42px] font-extrabold tracking-tight"><span data-count="17" data-suffix="">0</span></p>
+        <p class="mt-1 text-[13px] sm:text-[14px] text-white/60" data-i18n="stat4">Years of experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES / ADVANTAGES ============ -->
+<section id="services" class="px-4 sm:px-6 pt-24 lg:pt-32 scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="reveal max-w-2xl">
+        <p class="text-[13px] font-bold uppercase tracking-[.16em] text-olive-600" data-i18n="adv_eyebrow">Why Olivea</p>
+        <h2 class="mt-3 text-[32px] sm:text-5xl font-bold tracking-[-0.025em] leading-[1.08]" data-i18n="adv_title">A calmer way to find your next home</h2>
+      </div>
+      <p class="reveal reveal-d1 max-w-md text-[15px] leading-relaxed text-ink-mute" data-i18n="adv_sub">We pair an eye for architecture with a transparent service, so buying a home feels inspiring rather than stressful.</p>
+    </div>
+
+    <div class="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <!-- Big image -->
+      <div class="reveal group relative lg:col-span-7 overflow-hidden rounded-[22px] min-h-[380px] lg:min-h-[460px]">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80" alt="" class="absolute inset-0 h-full w-full object-cover transition duration-[1.2s] group-hover:scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-[12px] font-bold backdrop-blur">
+          <i data-lucide="scan-eye" class="h-4 w-4 text-olive-600"></i><span data-i18n="bento_chip">3D tour available</span>
+        </div>
+        <button class="absolute right-5 top-5 grid h-12 w-12 place-items-center rounded-full bg-white/90 text-ink transition hover:scale-110 hover:bg-olive-500 hover:text-white" aria-label="Play">
+          <i data-lucide="play" class="h-5 w-5 ml-0.5"></i>
+        </button>
+        <div class="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+          <h3 class="max-w-md text-2xl sm:text-3xl font-bold text-white tracking-tight" data-i18n="bento_t">Architecture that lets the light in</h3>
+          <p class="mt-2 max-w-md text-[14px] text-white/80" data-i18n="bento_d">Floor-to-ceiling glass, natural materials and a seamless flow between home and garden.</p>
+        </div>
+      </div>
+
+      <!-- Spotlight carousel -->
+      <div class="reveal reveal-d1 lg:col-span-5 rounded-[22px] bg-white p-4 sm:p-5 shadow-soft border border-line/60 flex flex-col">
+        <div class="flex items-center justify-between px-1">
+          <p class="text-[13px] font-bold uppercase tracking-[.12em] text-ink-mute" data-i18n="spot_label">This month's spotlight</p>
+          <div class="flex gap-2">
+            <button id="spotPrev" class="grid h-9 w-9 place-items-center rounded-full border border-line transition hover:bg-ink hover:text-white hover:border-ink" aria-label="Previous"><i data-lucide="arrow-left" class="h-4 w-4"></i></button>
+            <button id="spotNext" class="grid h-9 w-9 place-items-center rounded-full border border-line transition hover:bg-ink hover:text-white hover:border-ink" aria-label="Next"><i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+          </div>
+        </div>
+        <div id="spotlight" class="fade-swap mt-4 flex-1 flex flex-col"></div>
+        <div id="spotDots" class="mt-4 flex justify-center gap-1.5"></div>
+      </div>
+    </div>
+
+    <!-- Advantage cards -->
+    <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="reveal group rounded-[20px] bg-white p-6 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1.5 hover:shadow-lift hover:border-olive-200">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-olive-50 text-olive-700 transition duration-300 group-hover:bg-olive-600 group-hover:text-white group-hover:rotate-[-6deg]"><i data-lucide="shield-check" class="h-6 w-6"></i></span>
+        <h4 class="mt-5 text-[17px] font-bold" data-i18n="adv1_t">Verified listings</h4>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-mute" data-i18n="adv1_d">Every property is inspected by our team and legally checked before it reaches the catalog.</p>
+      </div>
+      <div class="reveal reveal-d1 group rounded-[20px] bg-white p-6 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1.5 hover:shadow-lift hover:border-olive-200">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-olive-50 text-olive-700 transition duration-300 group-hover:bg-olive-600 group-hover:text-white group-hover:rotate-[-6deg]"><i data-lucide="key-round" class="h-6 w-6"></i></span>
+        <h4 class="mt-5 text-[17px] font-bold" data-i18n="adv2_t">Private viewings</h4>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-mute" data-i18n="adv2_d">In person or through immersive 3D tours — always on your schedule.</p>
+      </div>
+      <div class="reveal reveal-d2 group rounded-[20px] bg-white p-6 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1.5 hover:shadow-lift hover:border-olive-200">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-olive-50 text-olive-700 transition duration-300 group-hover:bg-olive-600 group-hover:text-white group-hover:rotate-[-6deg]"><i data-lucide="landmark" class="h-6 w-6"></i></span>
+        <h4 class="mt-5 text-[17px] font-bold" data-i18n="adv3_t">Mortgage & legal support</h4>
+        <p class="mt-2 text-[14px] leading-relaxed text-ink-mute" data-i18n="adv3_d">Partner banks and in-house lawyers take care of all the paperwork.</p>
+      </div>
+      <div class="reveal reveal-d3 group rounded-[20px] bg-olive-600 p-6 text-white shadow-soft transition duration-300 hover:-translate-y-1.5 hover:shadow-lift hover:bg-olive-700">
+        <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 transition duration-300 group-hover:bg-white group-hover:text-olive-700 group-hover:rotate-[-6deg]"><i data-lucide="sparkles" class="h-6 w-6"></i></span>
+        <h4 class="mt-5 text-[17px] font-bold" data-i18n="adv4_t">After-sale care</h4>
+        <p class="mt-2 text-[14px] leading-relaxed text-white/75" data-i18n="adv4_d">Interior designers, movers and property management — all in one place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<section id="map" class="px-4 sm:px-6 pt-24 lg:pt-32 scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="rounded-[28px] bg-white p-4 sm:p-6 lg:p-8 shadow-soft border border-line/60">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        <div class="lg:col-span-4 flex flex-col">
+          <div class="reveal">
+            <p class="text-[13px] font-bold uppercase tracking-[.16em] text-olive-600" data-i18n="map_eyebrow">Interactive map</p>
+            <h2 class="mt-3 text-[30px] sm:text-4xl font-bold tracking-[-0.025em] leading-[1.1]" data-i18n="map_title">Discover properties with the best value</h2>
+            <p class="mt-3 text-[15px] leading-relaxed text-ink-mute" data-i18n="map_sub">Tap a region to see available homes, average prices and the best current offer.</p>
+          </div>
+          <!-- Region chips (mobile-friendly nav) -->
+          <div id="regionChips" class="mt-5 -mx-1 flex gap-2 overflow-x-auto no-scrollbar px-1 pb-1 lg:flex-wrap"></div>
+          <!-- Panel -->
+          <div id="mapPanel" class="mt-5 rounded-2xl bg-paper p-4 sm:p-5 flex-1"></div>
+        </div>
+
+        <div class="lg:col-span-8 reveal reveal-d1">
+          <div class="relative overflow-hidden rounded-[20px] bg-[#EEF0E8]">
+            <svg id="mapSvg" viewBox="0 0 800 520" class="block w-full h-auto select-none" role="img" aria-label="Property map">
+              <!-- water -->
+              <path d="M0 0 H170 C150 80 190 140 150 210 C110 290 160 360 120 430 C100 470 110 500 90 520 H0 Z" fill="#D6E3E2"/>
+              <path d="M620 520 C640 470 700 450 720 400 C740 360 790 350 800 330 V520 Z" fill="#D6E3E2"/>
+              <!-- parks -->
+              <path d="M300 60 C350 40 420 60 430 110 C440 160 380 180 330 160 C290 145 270 90 300 60Z" fill="#DCE5C6"/>
+              <path d="M470 230 C520 210 580 230 585 280 C590 320 530 340 490 320 C455 300 440 250 470 230Z" fill="#DCE5C6"/>
+              <path d="M220 420 C260 400 300 420 300 455 C300 490 250 500 225 480 C205 465 200 432 220 420Z" fill="#DCE5C6"/>
+              <path d="M640 120 C680 100 730 120 735 160 C740 195 690 210 660 195 C630 180 615 135 640 120Z" fill="#DCE5C6"/>
+              <!-- major roads -->
+              <g stroke="#FFFFFF" stroke-linecap="round" fill="none">
+                <path d="M150 300 C260 280 320 230 390 205 C470 175 560 190 640 160 C700 140 760 150 800 140" stroke-width="10"/>
+                <path d="M210 0 C215 90 200 160 240 230 C280 300 300 360 330 400 C360 440 420 470 470 520" stroke-width="10"/>
+                <path d="M390 205 C420 280 480 340 530 370 C590 405 650 430 690 445" stroke-width="8"/>
+                <path d="M0 470 C120 450 230 420 330 400" stroke-width="8"/>
+              </g>
+              <!-- minor roads -->
+              <g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none" opacity=".9">
+                <path d="M260 0 L280 520"/><path d="M360 0 L350 520"/><path d="M450 0 L470 520"/><path d="M560 0 L540 520"/><path d="M660 0 L640 520"/><path d="M740 0 L760 520"/>
+                <path d="M150 80 L800 70"/><path d="M160 150 L800 130"/><path d="M150 360 L800 330"/><path d="M110 470 L800 490"/><path d="M170 250 L800 240"/>
+              </g>
+              <g id="pins"></g>
+            </svg>
+            <div class="pointer-events-none absolute left-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-white/90 px-3 py-1.5 text-[12px] font-semibold text-ink-soft shadow-soft">
+              <i data-lucide="pointer" class="h-3.5 w-3.5 text-olive-600"></i><span data-i18n="map_hint">Tap a pin</span>
+            </div>
+            <div class="absolute right-3 top-3 flex flex-col gap-1.5">
+              <button class="grid h-9 w-9 place-items-center rounded-xl bg-white shadow-soft hover:bg-olive-50" aria-label="Zoom in" id="zoomIn"><i data-lucide="plus" class="h-4 w-4"></i></button>
+              <button class="grid h-9 w-9 place-items-center rounded-xl bg-white shadow-soft hover:bg-olive-50" aria-label="Zoom out" id="zoomOut"><i data-lucide="minus" class="h-4 w-4"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<section id="catalog" class="px-4 sm:px-6 pt-24 lg:pt-32 scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="reveal max-w-2xl">
+        <p class="text-[13px] font-bold uppercase tracking-[.16em] text-olive-600" data-i18n="cat_eyebrow">Catalog</p>
+        <h2 class="mt-3 text-[32px] sm:text-5xl font-bold tracking-[-0.025em] leading-[1.08]" data-i18n="cat_title">Explore our premier houses</h2>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-mute" data-i18n="cat_sub">Each home is selected for its architecture, location and long-term value.</p>
+      </div>
+      <div class="reveal reveal-d1 relative">
+        <select id="sortSel" class="rounded-full bg-white border border-line pl-10 pr-10 py-3 text-[14px] font-semibold outline-none cursor-pointer hover:border-olive-300 focus:ring-2 ring-olive-300 transition">
+          <option value="featured" data-i18n="sort_featured">Featured</option>
+          <option value="low" data-i18n="sort_low">Price: low to high</option>
+          <option value="high" data-i18n="sort_high">Price: high to low</option>
+        </select>
+        <i data-lucide="sliders-horizontal" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+        <i data-lucide="chevron-down" class="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-mute"></i>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div id="typeTabs" class="-mx-1 flex gap-2 overflow-x-auto no-scrollbar px-1 pb-1"></div>
+      <p class="text-[13px] text-ink-mute whitespace-nowrap"><span data-i18n="results">Properties found:</span> <b id="resCount" class="text-ink">0</b></p>
+    </div>
+
+    <div id="activeFilters" class="hidden mt-4 flex flex-wrap items-center gap-2 rounded-2xl bg-olive-50 border border-olive-100 px-4 py-3 text-[13px]"></div>
+
+    <div id="grid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+    <div id="empty" class="hidden mt-6 rounded-2xl border border-dashed border-line bg-white p-10 text-center">
+      <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-paper"><i data-lucide="search-x" class="h-6 w-6 text-ink-mute"></i></span>
+      <p class="mt-4 font-semibold" data-i18n="empty">No properties match these filters.</p>
+      <button class="reset-btn mt-4 rounded-full bg-ink px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-olive-700 transition" data-i18n="reset">Reset filters</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="reviews" class="px-4 sm:px-6 pt-24 lg:pt-32 scroll-mt-24">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+      <div class="reveal">
+        <p class="text-[13px] font-bold uppercase tracking-[.16em] text-olive-600" data-i18n="t_eyebrow">Testimonials</p>
+        <h2 class="mt-3 text-[32px] sm:text-5xl font-bold tracking-[-0.025em] leading-[1.08]" data-i18n="t_title">What our clients say</h2>
+      </div>
+      <div class="reveal reveal-d1 flex items-center gap-4 rounded-2xl bg-white px-5 py-4 shadow-soft border border-line/60">
+        <div class="flex -space-x-2.5">
+          <img class="h-10 w-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="" />
+          <img class="h-10 w-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="" />
+          <img class="h-10 w-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="" />
+        </div>
+        <div>
+          <div class="flex items-center gap-1 text-olive-500">
+            <i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i><i data-lucide="star" class="h-4 w-4 fill-current"></i>
+            <span class="ml-1 text-[13px] font-bold text-ink">4.9</span>
+          </div>
+          <p class="text-[13px] text-ink-mute" data-i18n="t_count">More than 2,000 client reviews</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 -mx-4 px-4 sm:mx-0 sm:px-0 flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory no-scrollbar pb-2">
+      <article class="reveal snap-center shrink-0 w-[86%] sm:w-auto group rounded-[22px] bg-white p-6 sm:p-7 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-olive-50 text-olive-600 transition group-hover:bg-olive-600 group-hover:text-white"><i data-lucide="quote" class="h-5 w-5"></i></span>
+        <p class="mt-5 flex-1 text-[15px] leading-relaxed text-ink-soft" data-i18n="t1">From the first call to the keys, the team understood exactly what we wanted. We found a villa that exceeded every expectation — and the paperwork was handled for us.</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-line pt-5">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80" class="h-11 w-11 rounded-full object-cover" alt="" />
+          <div><p class="font-bold text-[14px]">Sophia Bennett</p><p class="text-[12px] text-ink-mute" data-i18n="t1_role">Bought a villa in Malibu</p></div>
+        </div>
+      </article>
+      <article class="reveal reveal-d1 snap-center shrink-0 w-[86%] sm:w-auto group rounded-[22px] bg-ink p-6 sm:p-7 text-white shadow-soft transition duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-white/10 text-olive-300 transition group-hover:bg-olive-500 group-hover:text-white"><i data-lucide="quote" class="h-5 w-5"></i></span>
+        <p class="mt-5 flex-1 text-[15px] leading-relaxed text-white/80" data-i18n="t2">The 3D tours saved us weeks. We shortlisted three homes remotely and bought the second one after a single in-person viewing.</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-white/10 pt-5">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2a?auto=format&fit=crop&w=120&q=80" class="h-11 w-11 rounded-full object-cover" alt="" />
+          <div><p class="font-bold text-[14px]">James Carter</p><p class="text-[12px] text-white/55" data-i18n="t2_role">Bought a house in Austin</p></div>
+        </div>
+      </article>
+      <article class="reveal reveal-d2 snap-center shrink-0 w-[86%] sm:w-auto group rounded-[22px] bg-white p-6 sm:p-7 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1 hover:shadow-lift flex flex-col">
+        <span class="grid h-11 w-11 place-items-center rounded-2xl bg-olive-50 text-olive-600 transition group-hover:bg-olive-600 group-hover:text-white"><i data-lucide="quote" class="h-5 w-5"></i></span>
+        <p class="mt-5 flex-1 text-[15px] leading-relaxed text-ink-soft" data-i18n="t3">Honest advice and zero pressure. They even talked us out of an overpriced listing. Our new home in Seattle is perfect.</p>
+        <div class="mt-6 flex items-center gap-3 border-t border-line pt-5">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80" class="h-11 w-11 rounded-full object-cover" alt="" />
+          <div><p class="font-bold text-[14px]">Olena Kovalenko</p><p class="text-[12px] text-ink-mute" data-i18n="t3_role">Relocated to Seattle</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="px-4 sm:px-6 pt-24 lg:pt-32 scroll-mt-24">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+    <div class="lg:col-span-4 reveal">
+      <p class="text-[13px] font-bold uppercase tracking-[.16em] text-olive-600">FAQ</p>
+      <h2 class="mt-3 text-[32px] sm:text-5xl font-bold tracking-[-0.025em] leading-[1.08]" data-i18n="faq_title">Frequently asked questions</h2>
+      <p class="mt-4 text-[15px] leading-relaxed text-ink-mute" data-i18n="faq_sub">Didn't find an answer? Our team is one message away.</p>
+      <a href="mailto:hello@olivea.estate" class="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-[14px] font-semibold text-white transition hover:bg-olive-700 hover:-translate-y-0.5">
+        <i data-lucide="message-circle" class="h-4 w-4"></i><span data-i18n="btn_ask">Ask a question</span>
+      </a>
+      <div class="mt-8 hidden lg:block overflow-hidden rounded-[22px]">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80" class="h-56 w-full object-cover transition duration-700 hover:scale-105" alt="" />
+      </div>
+    </div>
+    <div class="lg:col-span-8 space-y-3" id="faqList">
+      <!-- items rendered from data -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="px-4 sm:px-6 pt-24 lg:pt-32">
+  <div class="max-w-7xl mx-auto">
+    <div class="reveal relative overflow-hidden rounded-[28px] min-h-[360px] flex items-end">
+      <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=2000&q=80" class="absolute inset-0 h-full w-full object-cover" alt="" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10"></div>
+      <div class="relative z-10 p-7 sm:p-12 lg:p-16 max-w-2xl">
+        <h2 class="text-[30px] sm:text-5xl font-bold tracking-[-0.025em] leading-[1.08] text-white" data-i18n="cta_title">Ready to make your dream home a reality?</h2>
+        <p class="mt-4 text-[15px] sm:text-[16px] text-white/80" data-i18n="cta_sub">Tell us what home means to you and we'll send a curated shortlist within 24 hours.</p>
+        <a href="#top" id="ctaStart" class="mt-7 inline-flex items-center gap-2 rounded-full bg-olive-500 px-6 py-3.5 text-[14px] font-bold text-white transition hover:bg-olive-400 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-olive-900/40">
+          <span data-i18n="btn_start">Get started</span><i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="px-4 sm:px-6 pt-24 pb-8 scroll-mt-24">
+  <div class="max-w-7xl mx-auto rounded-[28px] bg-ink text-white p-6 sm:p-10 lg:p-14">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-4">
+        <a href="#top" class="flex items-center gap-2.5">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-olive-500 text-white"><i data-lucide="house" class="h-5 w-5"></i></span>
+          <span class="whitespace-nowrap text-xl font-extrabold tracking-tight" translate="no">Olivea<span class="text-olive-400">.</span></span>
+        </a>
+        <p class="mt-4 max-w-xs text-[14px] leading-relaxed text-white/60" data-i18n="ft_about">Modern houses and villas — carefully selected and honestly priced.</p>
+        <div class="mt-6 flex gap-2">
+          <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-full bg-white/5 border border-white/10 transition hover:bg-olive-500 hover:border-olive-500 hover:-translate-y-0.5"><i data-lucide="instagram" class="h-4 w-4"></i></a>
+          <a href="#" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-full bg-white/5 border border-white/10 transition hover:bg-olive-500 hover:border-olive-500 hover:-translate-y-0.5"><i data-lucide="facebook" class="h-4 w-4"></i></a>
+          <a href="#" aria-label="LinkedIn" class="grid h-10 w-10 place-items-center rounded-full bg-white/5 border border-white/10 transition hover:bg-olive-500 hover:border-olive-500 hover:-translate-y-0.5"><i data-lucide="linkedin" class="h-4 w-4"></i></a>
+          <a href="#" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-full bg-white/5 border border-white/10 transition hover:bg-olive-500 hover:border-olive-500 hover:-translate-y-0.5"><i data-lucide="youtube" class="h-4 w-4"></i></a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 grid grid-cols-2 gap-6">
+        <div>
+          <p class="text-[13px] font-bold uppercase tracking-[.14em] text-white/40" data-i18n="ft_company">Company</p>
+          <ul class="mt-4 space-y-3 text-[14px] text-white/75">
+            <li><a href="#services" class="hover:text-olive-300 transition" data-i18n="ft_about_us">About us</a></li>
+            <li><a href="#" class="hover:text-olive-300 transition" data-i18n="ft_careers">Careers</a></li>
+            <li><a href="#" class="hover:text-olive-300 transition" data-i18n="ft_press">Press</a></li>
+            <li><a href="#reviews" class="hover:text-olive-300 transition" data-i18n="nav_reviews">Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[13px] font-bold uppercase tracking-[.14em] text-white/40" data-i18n="ft_services">Services</p>
+          <ul class="mt-4 space-y-3 text-[14px] text-white/75">
+            <li><a href="#catalog" class="hover:text-olive-300 transition" data-i18n="ft_buy">Buy a home</a></li>
+            <li><a href="#catalog" class="hover:text-olive-300 transition" data-i18n="ft_rent">Rent a home</a></li>
+            <li><a href="#faq" class="hover:text-olive-300 transition" data-i18n="ft_sell">Sell your property</a></li>
+            <li><a href="#map" class="hover:text-olive-300 transition" data-i18n="nav_map">Locations</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4">
+        <p class="text-[13px] font-bold uppercase tracking-[.14em] text-white/40" data-i18n="ft_contact">Contact</p>
+        <ul class="mt-4 space-y-3 text-[14px] text-white/75">
+          <li class="flex items-start gap-2.5"><i data-lucide="map-pin" class="mt-0.5 h-4 w-4 text-olive-400 shrink-0"></i>1250 Ocean Ave, Santa Monica, CA 90401</li>
+          <li class="flex items-center gap-2.5"><i data-lucide="phone" class="h-4 w-4 text-olive-400"></i><a href="tel:+13105550148" class="hover:text-olive-300">+1 (310) 555-0148</a></li>
+          <li class="flex items-center gap-2.5"><i data-lucide="mail" class="h-4 w-4 text-olive-400"></i><a href="mailto:hello@olivea.estate" class="hover:text-olive-300">hello@olivea.estate</a></li>
+          <li class="flex items-center gap-2.5"><i data-lucide="clock" class="h-4 w-4 text-olive-400"></i><span data-i18n="ft_hours">Mon–Sat, 9:00–19:00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="mt-12 rounded-[22px] bg-white/5 border border-white/10 p-5 sm:p-7 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+      <div>
+        <p class="text-lg font-bold" data-i18n="ft_news">Newsletter</p>
+        <p class="mt-1 text-[14px] text-white/60" data-i18n="ft_news_sub">New listings and market insights, twice a month.</p>
+      </div>
+      <form id="newsForm" class="flex w-full lg:w-auto flex-col sm:flex-row gap-2" novalidate>
+        <div class="relative flex-1 lg:w-80">
+          <i data-lucide="mail" class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/40"></i>
+          <input id="newsEmail" type="email" data-i18n-ph="ph_email" placeholder="Your email"
+                 class="w-full rounded-full bg-white/10 border border-white/10 pl-11 pr-4 py-3.5 text-[14px] text-white placeholder-white/40 outline-none focus:border-olive-400 focus:bg-white/15 transition" />
+        </div>
+        <button class="inline-flex items-center justify-center gap-2 rounded-full bg-olive-500 px-6 py-3.5 text-[14px] font-bold text-white transition hover:bg-olive-400 active:scale-[.98]">
+          <span data-i18n="btn_subscribe">Subscribe</span><i data-lucide="send" class="h-4 w-4"></i>
+        </button>
+      </form>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10 pt-6 text-[13px] text-white/45">
+      <p>© <span id="year"></span> Olivea Estates. <span data-i18n="ft_rights">All rights reserved.</span></p>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-white transition" data-i18n="ft_privacy">Privacy policy</a>
+        <a href="#" class="hover:text-white transition" data-i18n="ft_terms">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ QUICK VIEW MODAL ============ -->
+<div id="modal" class="fixed inset-0 z-[60] hidden">
+  <div id="modalBg" class="absolute inset-0 bg-ink/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+  <div class="absolute inset-0 flex items-end sm:items-center justify-center p-0 sm:p-6 pointer-events-none">
+    <div id="modalPanel" class="pointer-events-auto w-full sm:max-w-4xl max-h-[92vh] overflow-y-auto rounded-t-[28px] sm:rounded-[28px] bg-white shadow-2xl translate-y-8 opacity-0 transition duration-300"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed left-1/2 bottom-6 z-[70] -translate-x-1/2 translate-y-4 opacity-0 transition duration-300 pointer-events-none">
+  <div class="flex items-center gap-2.5 rounded-full bg-ink px-5 py-3.5 text-[14px] font-semibold text-white shadow-lift">
+    <span class="grid h-6 w-6 place-items-center rounded-full bg-olive-500"><i data-lucide="check" class="h-3.5 w-3.5"></i></span>
+    <span id="toastText"></span>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   TRANSLATIONS
+   ========================================================= */
+const I18N = {
+  en: {
+    nav_services: 'Services', nav_map: 'Locations', nav_properties: 'Properties', nav_reviews: 'Reviews', nav_faq: 'FAQ', nav_contact: 'Contact',
+    btn_consult: 'Get consultation',
+    hero_badge: 'Premium real estate since 2009',
+    hero_title: 'Find the home your <span class="text-olive-300">future</span> deserves',
+    hero_sub: 'We curate modern houses and villas built with honest materials, natural light and room to breathe — and guide you from the first viewing to the keys.',
+    hc_label: 'Featured this week', hc_happy: 'happy homeowners',
+    tab_buy: 'Buy', tab_rent: 'Rent',
+    f_location: 'Location', f_type: 'Property type', f_budget: 'Budget', f_rooms: 'Bedrooms',
+    f_any_location: 'All locations', f_any_type: 'Any type', f_any_budget: 'Any budget',
+    b1: 'Up to $1M', b2: '$1M – $3M', b3: '$3M+', r_any: 'Any', btn_search: 'Search',
+    type_villa: 'Villa', type_house: 'House', type_apartment: 'Apartment', type_penthouse: 'Penthouse',
+    city_malibu: 'Malibu', city_aspen: 'Aspen', city_miami: 'Miami', city_austin: 'Austin', city_seattle: 'Seattle', city_scottsdale: 'Scottsdale',
+    stat1: 'Satisfied clients', stat2: 'Properties in catalog', stat3: 'Industry awards', stat4: 'Years of experience',
+    adv_eyebrow: 'Why Olivea', adv_title: 'A calmer way to find your next home',
+    adv_sub: 'We pair an eye for architecture with a transparent service, so buying a home feels inspiring rather than stressful.',
+    bento_chip: '3D tour available', bento_t: 'Architecture that lets the light in',
+    bento_d: 'Floor-to-ceiling glass, natural materials and a seamless flow between home and garden.',
+    spot_label: "This month's spotlight", spot_from: 'Pricing starts at', btn_details: 'Details',
+    adv1_t: 'Verified listings', adv1_d: 'Every property is inspected by our team and legally checked before it reaches the catalog.',
+    adv2_t: 'Private viewings', adv2_d: 'In person or through immersive 3D tours — always on your schedule.',
+    adv3_t: 'Mortgage & legal support', adv3_d: 'Partner banks and in-house lawyers take care of all the paperwork.',
+    adv4_t: 'After-sale care', adv4_d: 'Interior designers, movers and property management — all in one place.',
+    map_eyebrow: 'Interactive map', map_title: 'Discover properties with the best value',
+    map_sub: 'Tap a region to see available homes, average prices and the best current offer.',
+    map_selected: 'Selected region', map_listings: 'Listings', map_avg: 'Avg. price', map_best: 'Best value per m²',
+    btn_view_region: 'View in catalog', map_hint: 'Tap a pin', map_from: 'from',
+    cat_eyebrow: 'Catalog', cat_title: 'Explore our premier houses', cat_sub: 'Each home is selected for its architecture, location and long-term value.',
+    tab_all: 'All', sort_featured: 'Featured', sort_low: 'Price: low to high', sort_high: 'Price: high to low',
+    badge_sale: 'For sale', badge_rent: 'For rent', per_month: '/mo',
+    beds: 'Beds', baths: 'Baths', sqm: 'm²', quick_view: 'Quick view',
+    empty: 'No properties match these filters.', reset: 'Reset filters', results: 'Properties found:', active_filters: 'Search filters:',
+    m_desc: 'A light-filled residence with floor-to-ceiling glazing, natural stone and oak finishes, a landscaped garden and seamless indoor-outdoor living. Smart-home ready, energy efficient and ready to move in.',
+    m_features: 'Highlights', feat_pool: 'Pool', feat_garage: 'Garage', feat_smart: 'Smart home', feat_garden: 'Garden', feat_view: 'Panoramic view', feat_gym: 'Gym',
+    m_book: 'Book a viewing', m_call: 'Call an agent', m_price: 'Price', m_area: 'Area',
+    toast_booked: 'Request sent! An agent will contact you within an hour.',
+    toast_call: 'Call us: +1 (310) 555-0148',
+    toast_like: 'Saved to favorites', toast_unlike: 'Removed from favorites',
+    t_eyebrow: 'Testimonials', t_title: 'What our clients say', t_count: 'More than 2,000 client reviews',
+    t1: 'From the first call to the keys, the team understood exactly what we wanted. We found a villa that exceeded every expectation — and the paperwork was handled for us.',
+    t1_role: 'Bought a villa in Malibu',
+    t2: 'The 3D tours saved us weeks. We shortlisted three homes remotely and bought the second one after a single in-person viewing.',
+    t2_role: 'Bought a house in Austin',
+    t3: 'Honest advice and zero pressure. They even talked us out of an overpriced listing. Our new home in Seattle is perfect.',
+    t3_role: 'Relocated to Seattle',
+    faq_title: 'Frequently asked questions', faq_sub: "Didn't find an answer? Our team is one message away.", btn_ask: 'Ask a question',
+    q1: 'How do I sell my property with you?',
+    a1: "Book a free valuation. We'll photograph and stage your home, present it to our network of qualified buyers and manage negotiations all the way to closing.",
+    q2: 'Is real estate a good investment right now?',
+    a2: 'Well-located, high-quality homes have historically held their value over the long term. Our analysts prepare a market report for every property so you can decide based on real data.',
+    q3: 'Do I need an agent to buy a home?',
+    a3: "It's not required, but an agent protects your interests: pricing, inspections, negotiation and legal checks. Our buyer representation is free for most listings.",
+    q4: 'How long does the buying process take?',
+    a4: 'Typically 30–60 days from an accepted offer to closing, depending on financing and inspections. Cash purchases can close in as little as two weeks.',
+    q5: 'Can I buy a property remotely?',
+    a5: 'Yes. With 3D tours, video viewings, e-signatures and remote notarization, many of our clients buy without travelling until moving day.',
+    cta_title: 'Ready to make your dream home a reality?',
+    cta_sub: "Tell us what home means to you and we'll send a curated shortlist within 24 hours.",
+    btn_start: 'Get started',
+    ft_about: 'Modern houses and villas — carefully selected and honestly priced.',
+    ft_company: 'Company', ft_about_us: 'About us', ft_careers: 'Careers', ft_press: 'Press',
+    ft_services: 'Services', ft_buy: 'Buy a home', ft_rent: 'Rent a home', ft_sell: 'Sell your property',
+    ft_contact: 'Contact', ft_hours: 'Mon–Sat, 9:00–19:00',
+    ft_news: 'Newsletter', ft_news_sub: 'New listings and market insights, twice a month.',
+    ph_email: 'Your email', btn_subscribe: 'Subscribe',
+    toast_sub: "Thanks! You're subscribed.", toast_invalid: 'Please enter a valid email.',
+    ft_rights: 'All rights reserved.', ft_privacy: 'Privacy policy', ft_terms: 'Terms'
+  },
+
+  uk: {
+    nav_services: 'Переваги', nav_map: 'Локації', nav_properties: "Об'єкти", nav_reviews: 'Відгуки', nav_faq: 'Питання', nav_contact: 'Контакти',
+    btn_consult: 'Консультація',
+    hero_badge: 'Преміальна нерухомість з 2009 року',
+    hero_title: 'Знайдіть дім, на який <span class="text-olive-300">заслуговує</span> ваше майбутнє',
+    hero_sub: 'Ми відбираємо сучасні будинки та вілли з чесних матеріалів, з природним світлом і простором для життя — і супроводжуємо вас від першого перегляду до ключів.',
+    hc_label: 'Пропозиція тижня', hc_happy: 'щасливих власників',
+    tab_buy: 'Купити', tab_rent: 'Орендувати',
+    f_location: 'Локація', f_type: 'Тип житла', f_budget: 'Бюджет', f_rooms: 'Спальні',
+    f_any_location: 'Усі локації', f_any_type: 'Будь-який тип', f_any_budget: 'Будь-який бюджет',
+    b1: 'До $1 млн', b2: '$1–3 млн', b3: 'Від $3 млн', r_any: 'Будь-яка', btn_search: 'Шукати',
+    type_villa: 'Вілла', type_house: 'Будинок', type_apartment: 'Апартаменти', type_penthouse: 'Пентхаус',
+    city_malibu: 'Малібу', city_aspen: 'Аспен', city_miami: 'Маямі', city_austin: 'Остін', city_seattle: 'Сіетл', city_scottsdale: 'Скоттсдейл',
+    stat1: 'Задоволених клієнтів', stat2: "Об'єктів у каталозі", stat3: 'Галузевих нагород', stat4: 'Років досвіду',
+    adv_eyebrow: 'Чому Olivea', adv_title: 'Спокійніший шлях до нового дому',
+    adv_sub: 'Ми поєднуємо архітектурний смак із прозорим сервісом, щоб купівля дому надихала, а не виснажувала.',
+    bento_chip: '3D-тур доступний', bento_t: 'Архітектура, що впускає світло',
+    bento_d: 'Панорамне скління, природні матеріали та плавний перехід між будинком і садом.',
+    spot_label: 'У фокусі цього місяця', spot_from: 'Ціна від', btn_details: 'Детальніше',
+    adv1_t: "Перевірені об'єкти", adv1_d: "Кожен об'єкт оглядає наша команда та перевіряють юристи, перш ніж він потрапить у каталог.",
+    adv2_t: 'Приватні перегляди', adv2_d: 'Особисто або через 3D-тури — у зручний для вас час.',
+    adv3_t: 'Іпотека та юридичний супровід', adv3_d: 'Банки-партнери та наші юристи візьмуть на себе всі документи.',
+    adv4_t: 'Турбота після угоди', adv4_d: "Дизайнери інтер'єру, переїзд і управління нерухомістю — в одному місці.",
+    map_eyebrow: 'Інтерактивна карта', map_title: "Знайдіть об'єкти з найкращою ціною",
+    map_sub: "Оберіть регіон, щоб побачити доступні об'єкти, середні ціни та найвигіднішу пропозицію.",
+    map_selected: 'Обраний регіон', map_listings: "Об'єктів", map_avg: 'Середня ціна', map_best: 'Найкраща ціна за м²',
+    btn_view_region: 'Дивитися в каталозі', map_hint: 'Натисніть на мітку', map_from: 'від',
+    cat_eyebrow: 'Каталог', cat_title: 'Наші преміальні будинки', cat_sub: "Кожен об'єкт відібрано за якість архітектури, розташування та потенціал вартості.",
+    tab_all: 'Усі', sort_featured: 'Рекомендовані', sort_low: 'Ціна: за зростанням', sort_high: 'Ціна: за спаданням',
+    badge_sale: 'Продаж', badge_rent: 'Оренда', per_month: '/міс',
+    beds: 'Спальні', baths: 'Ванні', sqm: 'м²', quick_view: 'Швидкий перегляд',
+    empty: "Немає об'єктів за цими фільтрами.", reset: 'Скинути фільтри', results: "Знайдено об'єктів:", active_filters: 'Фільтри пошуку:',
+    m_desc: "Світла резиденція з панорамним склінням, натуральним каменем і дубом, ландшафтним садом та плавним переходом між інтер'єром і терасою. Розумний дім, енергоефективність і готовність до заселення.",
+    m_features: 'Особливості', feat_pool: 'Басейн', feat_garage: 'Гараж', feat_smart: 'Розумний дім', feat_garden: 'Сад', feat_view: 'Панорамний вид', feat_gym: 'Спортзал',
+    m_book: 'Записатися на перегляд', m_call: 'Зателефонувати агенту', m_price: 'Ціна', m_area: 'Площа',
+    toast_booked: "Заявку надіслано! Агент зв'яжеться з вами протягом години.",
+    toast_call: 'Телефонуйте: +1 (310) 555-0148',
+    toast_like: 'Додано в обране', toast_unlike: 'Видалено з обраного',
+    t_eyebrow: 'Відгуки', t_title: 'Що кажуть наші клієнти', t_count: 'Понад 2 000 відгуків клієнтів',
+    t1: 'Від першого дзвінка до ключів команда точно розуміла, чого ми хочемо. Ми знайшли віллу, що перевершила всі очікування, а документи оформили за нас.',
+    t1_role: 'Купила віллу в Малібу',
+    t2: '3D-тури зекономили нам тижні. Ми обрали три будинки дистанційно й купили другий після одного особистого перегляду.',
+    t2_role: 'Купив будинок в Остіні',
+    t3: 'Чесні поради без жодного тиску. Нас навіть відмовили від переоціненого варіанта. Наш новий дім у Сіетлі — ідеальний.',
+    t3_role: 'Переїхала до Сіетла',
+    faq_title: 'Часті запитання', faq_sub: 'Не знайшли відповідь? Напишіть нашій команді.', btn_ask: 'Поставити запитання',
+    q1: 'Як продати свою нерухомість через вас?',
+    a1: 'Запишіться на безкоштовну оцінку. Ми сфотографуємо й підготуємо ваш дім, представимо його нашій базі покупців і проведемо переговори аж до закриття угоди.',
+    q2: 'Чи вигідно зараз інвестувати в нерухомість?',
+    a2: "Якісне житло в хороших локаціях історично зберігає вартість у довгостроковій перспективі. Наші аналітики готують ринковий звіт до кожного об'єкта, щоб ви ухвалювали рішення на основі даних.",
+    q3: 'Чи потрібен агент для купівлі дому?',
+    a3: "Це не обов'язково, але агент захищає ваші інтереси: ціна, огляди, переговори та юридична перевірка. Для більшості об'єктів наш супровід покупця безкоштовний.",
+    q4: 'Скільки триває процес купівлі?',
+    a4: 'Зазвичай 30–60 днів від прийнятої пропозиції до закриття угоди, залежно від фінансування та оглядів. Купівля за готівку може зайняти лише два тижні.',
+    q5: 'Чи можна купити нерухомість дистанційно?',
+    a5: 'Так. Завдяки 3D-турам, відеопереглядам, електронному підпису та дистанційному нотаріальному засвідченню багато клієнтів купують, не приїжджаючи до дня переїзду.',
+    cta_title: 'Готові втілити дім мрії в реальність?',
+    cta_sub: 'Розкажіть, яким ви бачите свій дім, — і ми надішлемо персональну добірку за 24 години.',
+    btn_start: 'Почати',
+    ft_about: 'Сучасні будинки та вілли — ретельно відібрані та чесно оцінені.',
+    ft_company: 'Компанія', ft_about_us: 'Про нас', ft_careers: "Кар'єра", ft_press: 'Преса',
+    ft_services: 'Послуги', ft_buy: 'Купити дім', ft_rent: 'Орендувати дім', ft_sell: 'Продати нерухомість',
+    ft_contact: 'Контакти', ft_hours: 'Пн–Сб, 9:00–19:00',
+    ft_news: 'Розсилка', ft_news_sub: "Нові об'єкти та аналітика ринку двічі на місяць.",
+    ph_email: 'Ваш email', btn_subscribe: 'Підписатися',
+    toast_sub: 'Дякуємо! Ви підписалися.', toast_invalid: 'Введіть коректний email.',
+    ft_rights: 'Усі права захищено.', ft_privacy: 'Політика конфіденційності', ft_terms: 'Умови'
+  },
+
+  ru: {
+    nav_services: 'Преимущества', nav_map: 'Локации', nav_properties: 'Объекты', nav_reviews: 'Отзывы', nav_faq: 'Вопросы', nav_contact: 'Контакты',
+    btn_consult: 'Консультация',
+    hero_badge: 'Премиальная недвижимость с 2009 года',
+    hero_title: 'Найдите дом, которого <span class="text-olive-300">достойно</span> ваше будущее',
+    hero_sub: 'Мы отбираем современные дома и виллы из честных материалов, с естественным светом и пространством для жизни — и сопровождаем вас от первого просмотра до ключей.',
+    hc_label: 'Предложение недели', hc_happy: 'счастливых владельцев',
+    tab_buy: 'Купить', tab_rent: 'Арендовать',
+    f_location: 'Локация', f_type: 'Тип жилья', f_budget: 'Бюджет', f_rooms: 'Спальни',
+    f_any_location: 'Все локации', f_any_type: 'Любой тип', f_any_budget: 'Любой бюджет',
+    b1: 'До $1 млн', b2: '$1–3 млн', b3: 'От $3 млн', r_any: 'Любое', btn_search: 'Найти',
+    type_villa: 'Вилла', type_house: 'Дом', type_apartment: 'Апартаменты', type_penthouse: 'Пентхаус',
+    city_malibu: 'Малибу', city_aspen: 'Аспен', city_miami: 'Майами', city_austin: 'Остин', city_seattle: 'Сиэтл', city_scottsdale: 'Скоттсдейл',
+    stat1: 'Довольных клиентов', stat2: 'Объектов в каталоге', stat3: 'Отраслевых наград', stat4: 'Лет опыта',
+    adv_eyebrow: 'Почему Olivea', adv_title: 'Более спокойный путь к новому дому',
+    adv_sub: 'Мы сочетаем архитектурный вкус с прозрачным сервисом, чтобы покупка дома вдохновляла, а не утомляла.',
+    bento_chip: '3D-тур доступен', bento_t: 'Архитектура, которая впускает свет',
+    bento_d: 'Панорамное остекление, натуральные материалы и плавный переход между домом и садом.',
+    spot_label: 'В фокусе этого месяца', spot_from: 'Цена от', btn_details: 'Подробнее',
+    adv1_t: 'Проверенные объекты', adv1_d: 'Каждый объект осматривает наша команда и проверяют юристы, прежде чем он попадёт в каталог.',
+    adv2_t: 'Частные просмотры', adv2_d: 'Лично или через 3D-туры — в удобное для вас время.',
+    adv3_t: 'Ипотека и юридическое сопровождение', adv3_d: 'Банки-партнёры и наши юристы возьмут на себя все документы.',
+    adv4_t: 'Забота после сделки', adv4_d: 'Дизайнеры интерьера, переезд и управление недвижимостью — в одном месте.',
+    map_eyebrow: 'Интерактивная карта', map_title: 'Найдите объекты с лучшей ценой',
+    map_sub: 'Выберите регион, чтобы увидеть доступные объекты, средние цены и самое выгодное предложение.',
+    map_selected: 'Выбранный регион', map_listings: 'Объектов', map_avg: 'Средняя цена', map_best: 'Лучшая цена за м²',
+    btn_view_region: 'Смотреть в каталоге', map_hint: 'Нажмите на метку', map_from: 'от',
+    cat_eyebrow: 'Каталог', cat_title: 'Наши премиальные дома', cat_sub: 'Каждый объект отобран за качество архитектуры, расположение и потенциал стоимости.',
+    tab_all: 'Все', sort_featured: 'Рекомендуемые', sort_low: 'Цена: по возрастанию', sort_high: 'Цена: по убыванию',
+    badge_sale: 'Продажа', badge_rent: 'Аренда', per_month: '/мес',
+    beds: 'Спальни', baths: 'Ванные', sqm: 'м²', quick_view: 'Быстрый просмотр',
+    empty: 'Нет объектов по этим фильтрам.', reset: 'Сбросить фильтры', results: 'Найдено объектов:', active_filters: 'Фильтры поиска:',
+    m_desc: 'Светлая резиденция с панорамным остеклением, натуральным камнем и дубом, ландшафтным садом и плавным переходом между интерьером и террасой. Умный дом, энергоэффективность и готовность к заселению.',
+    m_features: 'Особенности', feat_pool: 'Бассейн', feat_garage: 'Гараж', feat_smart: 'Умный дом', feat_garden: 'Сад', feat_view: 'Панорамный вид', feat_gym: 'Спортзал',
+    m_book: 'Записаться на просмотр', m_call: 'Позвонить агенту', m_price: 'Цена', m_area: 'Площадь',
+    toast_booked: 'Заявка отправлена! Агент свяжется с вами в течение часа.',
+    toast_call: 'Звоните: +1 (310) 555-0148',
+    toast_like: 'Добавлено в избранное', toast_unlike: 'Удалено из избранного',
+    t_eyebrow: 'Отзывы', t_title: 'Что говорят наши клиенты', t_count: 'Более 2 000 отзывов клиентов',
+    t1: 'От первого звонка до ключей команда точно понимала, чего мы хотим. Мы нашли виллу, которая превзошла все ожидания, а документы оформили за нас.',
+    t1_role: 'Купила виллу в Малибу',
+    t2: '3D-туры сэкономили нам недели. Мы выбрали три дома дистанционно и купили второй после одного личного просмотра.',
+    t2_role: 'Купил дом в Остине',
+    t3: 'Честные советы без всякого давления. Нас даже отговорили от переоценённого варианта. Наш новый дом в Сиэтле — идеальный.',
+    t3_role: 'Переехала в Сиэтл',
+    faq_title: 'Частые вопросы', faq_sub: 'Не нашли ответ? Напишите нашей команде.', btn_ask: 'Задать вопрос',
+    q1: 'Как продать свою недвижимость через вас?',
+    a1: 'Запишитесь на бесплатную оценку. Мы сфотографируем и подготовим ваш дом, представим его нашей базе покупателей и проведём переговоры вплоть до закрытия сделки.',
+    q2: 'Выгодно ли сейчас инвестировать в недвижимость?',
+    a2: 'Качественное жильё в хороших локациях исторически сохраняет стоимость в долгосрочной перспективе. Наши аналитики готовят рыночный отчёт по каждому объекту, чтобы вы принимали решение на основе данных.',
+    q3: 'Нужен ли агент для покупки дома?',
+    a3: 'Это не обязательно, но агент защищает ваши интересы: цена, осмотры, переговоры и юридическая проверка. Для большинства объектов наше сопровождение покупателя бесплатно.',
+    q4: 'Сколько длится процесс покупки?',
+    a4: 'Обычно 30–60 дней от принятого предложения до закрытия сделки, в зависимости от финансирования и осмотров. Покупка за наличные может занять всего две недели.',
+    q5: 'Можно ли купить недвижимость дистанционно?',
+    a5: 'Да. Благодаря 3D-турам, видеопросмотрам, электронной подписи и дистанционному нотариальному заверению многие клиенты покупают, не приезжая до дня переезда.',
+    cta_title: 'Готовы воплотить дом мечты в реальность?',
+    cta_sub: 'Расскажите, каким вы видите свой дом, — и мы пришлём персональную подборку за 24 часа.',
+    btn_start: 'Начать',
+    ft_about: 'Современные дома и виллы — тщательно отобранные и честно оценённые.',
+    ft_company: 'Компания', ft_about_us: 'О нас', ft_careers: 'Карьера', ft_press: 'Пресса',
+    ft_services: 'Услуги', ft_buy: 'Купить дом', ft_rent: 'Арендовать дом', ft_sell: 'Продать недвижимость',
+    ft_contact: 'Контакты', ft_hours: 'Пн–Сб, 9:00–19:00',
+    ft_news: 'Рассылка', ft_news_sub: 'Новые объекты и аналитика рынка дважды в месяц.',
+    ph_email: 'Ваш email', btn_subscribe: 'Подписаться',
+    toast_sub: 'Спасибо! Вы подписались.', toast_invalid: 'Введите корректный email.',
+    ft_rights: 'Все права защищены.', ft_privacy: 'Политика конфиденциальности', ft_terms: 'Условия'
+  }
+};
+
+/* =========================================================
+   DATA
+   ========================================================= */
+const IMG = (id, w = 1200) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+const PROPS = [
+  { id: 1, title: 'Glasshouse Residence', type: 'villa',     city: 'malibu',     status: 'sale', price: 4850000, beds: 5, baths: 4, area: 420, img: 'photo-1613490493576-7fde63acd811', feats: ['pool','view','smart','garage'] },
+  { id: 2, title: 'Cedar Ridge House',    type: 'house',     city: 'aspen',      status: 'sale', price: 2390000, beds: 4, baths: 3, area: 310, img: 'photo-1600596542815-ffad4c1539a9', feats: ['garden','garage','view'] },
+  { id: 3, title: 'Oasis Pool Villa',     type: 'villa',     city: 'miami',      status: 'sale', price: 3750000, beds: 6, baths: 5, area: 480, img: 'photo-1512917774080-9991f1c4c750', feats: ['pool','gym','smart','garden'] },
+  { id: 4, title: 'Monolith Loft',        type: 'apartment', city: 'seattle',    status: 'rent', price: 6500,    beds: 2, baths: 2, area: 140, img: 'photo-1600607687939-ce8a6c25118c', feats: ['smart','view','gym'] },
+  { id: 5, title: 'Sunset Terrace',       type: 'house',     city: 'austin',     status: 'sale', price: 1480000, beds: 4, baths: 3, area: 260, img: 'photo-1580587771525-78b9dba3b914', feats: ['garden','garage','pool'] },
+  { id: 6, title: 'Desert Line Villa',    type: 'villa',     city: 'scottsdale', status: 'sale', price: 2950000, beds: 5, baths: 4, area: 390, img: 'photo-1605276374104-dee2a0ed3cd6', feats: ['pool','view','smart'] },
+  { id: 7, title: 'Skyline Penthouse',    type: 'penthouse', city: 'miami',      status: 'rent', price: 14500,   beds: 3, baths: 3, area: 220, img: 'photo-1502672260266-1c1ef2d93688', feats: ['view','gym','smart'] },
+  { id: 8, title: 'Willow Creek Home',    type: 'house',     city: 'seattle',    status: 'sale', price: 980000,  beds: 3, baths: 2, area: 190, img: 'photo-1570129477492-45c003edd2be', feats: ['garden','garage'] },
+  { id: 9, title: 'Canyon Edge Villa',    type: 'villa',     city: 'malibu',     status: 'sale', price: 6400000, beds: 7, baths: 6, area: 610, img: 'photo-1613977257363-707ba9348227', feats: ['pool','view','gym','smart','garage'] }
+];
+const INTERIORS = ['photo-1600566753190-17f0baa2a6c3', 'photo-1600210492486-724fe5c67fb0', 'photo-1600607687939-ce8a6c25118c'];
+const SPOT_IDS = [2, 6, 5];
+const CITIES = {
+  seattle:    { x: 215, y: 92 },
+  malibu:     { x: 125, y: 315 },
+  aspen:      { x: 392, y: 205 },
+  scottsdale: { x: 330, y: 392 },
+  austin:     { x: 530, y: 372 },
+  miami:      { x: 692, y: 445 }
+};
+const TYPES = ['all', 'villa', 'house', 'apartment', 'penthouse'];
+const FAQ_N = 5;
+
+/* =========================================================
+   STATE & HELPERS
+   ========================================================= */
+let lang = 'en';
+try { lang = localStorage.getItem('olivea_lang') || 'en'; } catch (e) {}
+if (!I18N[lang]) lang = 'en';
+
+const DEFAULT = { status: 'all', city: 'all', type: 'all', budget: 'all', rooms: 0, sort: 'featured' };
+const state = { ...DEFAULT };
+let deal = 'sale';
+let selectedCity = 'malibu';
+let spotIdx = 0;
+let spotTimer = null;
+const liked = new Set();
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const t = (k) => (I18N[lang] && I18N[lang][k] !== undefined) ? I18N[lang][k] : (I18N.en[k] ?? k);
+const icons = () => window.lucide && lucide.createIcons();
+
+const money = (n) => '$' + n.toLocaleString('en-US');
+const short = (n) => n >= 1e6 ? '$' + (n / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'M' : '$' + Math.round(n / 1e3) + 'K';
+const priceLabel = (p) => money(p.price) + (p.status === 'rent' ? t('per_month') : '');
+
+function toast(msg) {
+  const el = $('#toast');
+  $('#toastText').textContent = msg;
+  el.classList.add('toast-show');
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => el.classList.remove('toast-show'), 2800);
+}
+
+/* =========================================================
+   I18N APPLY
+   ========================================================= */
+function applyI18n() {
+  document.documentElement.lang = lang;
+  $$('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+  $$('[data-i18n-html]').forEach(el => el.innerHTML = t(el.dataset.i18nHtml));
+  $$('[data-i18n-ph]').forEach(el => el.placeholder = t(el.dataset.i18nPh));
+  $$('.lang-btn').forEach(b => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('bg-ink', on);
+    b.classList.toggle('text-white', on);
+    b.classList.toggle('text-ink-mute', !on);
+  });
+  renderTabs(); renderCatalog(); renderSpot(); renderMap(); renderFaq(); renderActive();
+}
+
+function setLang(l) {
+  lang = l;
+  try { localStorage.setItem('olivea_lang', l); } catch (e) {}
+  applyI18n();
+}
+
+/* =========================================================
+   CATALOG
+   ========================================================= */
+function budgetOk(p) {
+  if (state.budget === 'all' || p.status === 'rent') return true;
+  if (state.budget === 'b1') return p.price < 1e6;
+  if (state.budget === 'b2') return p.price >= 1e6 && p.price < 3e6;
+  return p.price >= 3e6;
+}
+function filtered() {
+  let list = PROPS.filter(p =>
+    (state.status === 'all' || p.status === state.status) &&
+    (state.city === 'all' || p.city === state.city) &&
+    (state.type === 'all' || p.type === state.type) &&
+    p.beds >= state.rooms && budgetOk(p));
+  if (state.sort === 'low') list.sort((a, b) => a.price - b.price);
+  if (state.sort === 'high') list.sort((a, b) => b.price - a.price);
+  return list;
+}
+
+function renderTabs() {
+  $('#typeTabs').innerHTML = TYPES.map(ty => {
+    const on = state.type === ty;
+    const n = ty === 'all' ? PROPS.length : PROPS.filter(p => p.type === ty).length;
+    return `<button data-type="${ty}" class="shrink-0 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-[13px] font-bold transition
+      ${on ? 'bg-olive-600 text-white shadow-md shadow-olive-600/25' : 'bg-white border border-line text-ink-soft hover:border-olive-300 hover:text-ink'}">
+      ${t(ty === 'all' ? 'tab_all' : 'type_' + ty)}
+      <span class="rounded-full px-1.5 text-[11px] ${on ? 'bg-white/20' : 'bg-paper'}">${n}</span></button>`;
+  }).join('');
+}
+
+function cardHTML(p, i) {
+  const isLiked = liked.has(p.id);
+  return `
+  <article class="card-in group relative rounded-[22px] bg-white p-3 shadow-soft border border-line/60 transition duration-300 hover:-translate-y-1.5 hover:shadow-lift cursor-pointer" style="animation-delay:${i * 60}ms" data-open="${p.id}">
+    <div class="relative overflow-hidden rounded-2xl aspect-[4/3]">
+      <img src="${IMG(p.img, 900)}" alt="${p.title}" loading="lazy" class="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 transition group-hover:opacity-100"></div>
+      <span class="absolute left-3 top-3 rounded-full px-3 py-1 text-[11px] font-bold backdrop-blur ${p.status === 'rent' ? 'bg-ink/80 text-white' : 'bg-white/90 text-olive-700'}">${t(p.status === 'rent' ? 'badge_rent' : 'badge_sale')}</span>
+      <button data-like="${p.id}" aria-label="Like" class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/90 backdrop-blur transition hover:scale-110 ${isLiked ? 'text-red-500' : 'text-ink'}">
+        <i data-lucide="heart" class="h-4 w-4 ${isLiked ? 'fill-current' : ''}"></i>
+      </button>
+      <button data-qv="${p.id}" class="absolute bottom-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-white px-4 py-2 text-[12px] font-bold shadow-lg transition duration-300 lg:translate-y-3 lg:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-olive-600 hover:text-white">
+        <i data-lucide="eye" class="h-3.5 w-3.5"></i>${t('quick_view')}
+      </button>
+    </div>
+    <div class="px-2 pt-4 pb-2">
+      <div class="flex items-center justify-between gap-2">
+        <p class="text-[20px] font-extrabold tracking-tight">${priceLabel(p)}</p>
+        <span class="rounded-full bg-olive-50 px-2.5 py-1 text-[11px] font-bold text-olive-700">${t('type_' + p.type)}</span>
+      </div>
+      <h3 class="mt-1.5 text-[16px] font-bold">${p.title}</h3>
+      <p class="mt-1 flex items-center gap-1 text-[13px] text-ink-mute"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i>${t('city_' + p.city)}</p>
+      <div class="mt-4 grid grid-cols-3 gap-2 border-t border-line pt-3.5 text-[12px] text-ink-soft">
+        <span class="flex items-center gap-1.5"><i data-lucide="bed-double" class="h-4 w-4 text-olive-600"></i><b>${p.beds}</b> <span class="text-ink-mute hidden sm:inline">${t('beds')}</span></span>
+        <span class="flex items-center gap-1.5"><i data-lucide="bath" class="h-4 w-4 text-olive-600"></i><b>${p.baths}</b> <span class="text-ink-mute hidden sm:inline">${t('baths')}</span></span>
+        <span class="flex items-center gap-1.5"><i data-lucide="maximize" class="h-4 w-4 text-olive-600"></i><b>${p.area}</b> <span class="text-ink-mute">${t('sqm')}</span></span>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderCatalog() {
+  const list = filtered();
+  $('#grid').innerHTML = list.map(cardHTML).join('');
+  $('#resCount').textContent = list.length;
+  $('#empty').classList.toggle('hidden', list.length > 0);
+  icons();
+}
+
+function renderActive() {
+  const box = $('#activeFilters');
+  const chips = [];
+  if (state.status !== 'all') chips.push(t(state.status === 'rent' ? 'tab_rent' : 'tab_buy'));
+  if (state.city !== 'all') chips.push(t('city_' + state.city));
+  if (state.budget !== 'all') chips.push(t(state.budget));
+  if (state.rooms > 0) chips.push(state.rooms + '+ ' + t('beds').toLowerCase());
+  if (!chips.length) { box.classList.add('hidden'); return; }
+  box.classList.remove('hidden');
+  box.innerHTML = `<span class="font-semibold text-olive-800">${t('active_filters')}</span>
+    ${chips.map(c => `<span class="rounded-full bg-white px-3 py-1 font-semibold border border-olive-100">${c}</span>`).join('')}
+    <button class="reset-btn ml-auto inline-flex items-center gap-1 font-bold text-olive-700 hover:text-ink"><i data-lucide="x" class="h-4 w-4"></i>${t('reset')}</button>`;
+  icons();
+}
+
+function resetFilters() {
+  Object.assign(state, DEFAULT, { sort: state.sort });
+  $('#sCity').value = 'all'; $('#sType').value = 'all'; $('#sBudget').value = 'all'; $('#sRooms').value = '0';
+  renderTabs(); renderCatalog(); renderActive();
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+function openModal(id) {
+  const p = PROPS.find(x => x.id === +id);
+  if (!p) return;
+  const gallery = [p.img, ...INTERIORS.filter(x => x !== p.img).slice(0, 2)];
+  $('#modalPanel').innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <div class="p-3 sm:p-4">
+        <div class="relative overflow-hidden rounded-[20px] aspect-[4/3] md:aspect-auto md:h-[360px]">
+          <img id="mMain" src="${IMG(gallery[0], 1400)}" class="h-full w-full object-cover transition duration-500" alt="${p.title}" />
+          <button id="mClose" class="absolute right-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-white/90 hover:bg-ink hover:text-white transition" aria-label="Close"><i data-lucide="x" class="h-5 w-5"></i></button>
+        </div>
+        <div class="mt-3 grid grid-cols-3 gap-2">
+          ${gallery.map((g, i) => `<button data-thumb="${g}" class="overflow-hidden rounded-xl ring-2 ${i === 0 ? 'ring-olive-500' : 'ring-transparent'} transition hover:ring-olive-300"><img src="${IMG(g, 400)}" class="h-20 w-full object-cover" alt="" /></button>`).join('')}
+        </div>
+      </div>
+      <div class="p-5 sm:p-7 md:pl-3 flex flex-col">
+        <div class="flex flex-wrap gap-2">
+          <span class="rounded-full px-3 py-1 text-[11px] font-bold ${p.status === 'rent' ? 'bg-ink text-white' : 'bg-olive-50 text-olive-700'}">${t(p.status === 'rent' ? 'badge_rent' : 'badge_sale')}</span>
+          <span class="rounded-full bg-paper px-3 py-1 text-[11px] font-bold">${t('type_' + p.type)}</span>
+        </div>
+        <h3 class="mt-3 text-2xl sm:text-[28px] font-bold tracking-tight">${p.title}</h3>
+        <p class="mt-1 flex items-center gap-1 text-[14px] text-ink-mute"><i data-lucide="map-pin" class="h-4 w-4"></i>${t('city_' + p.city)}</p>
+        <p class="mt-4 text-3xl font-extrabold tracking-tight">${priceLabel(p)}</p>
+        <div class="mt-5 grid grid-cols-3 gap-2">
+          <div class="rounded-xl bg-paper p-3 text-center"><i data-lucide="bed-double" class="mx-auto h-5 w-5 text-olive-600"></i><p class="mt-1 font-bold">${p.beds}</p><p class="text-[11px] text-ink-mute">${t('beds')}</p></div>
+          <div class="rounded-xl bg-paper p-3 text-center"><i data-lucide="bath" class="mx-auto h-5 w-5 text-olive-600"></i><p class="mt-1 font-bold">${p.baths}</p><p class="text-[11px] text-ink-mute">${t('baths')}</p></div>
+          <div class="rounded-xl bg-paper p-3 text-center"><i data-lucide="maximize" class="mx-auto h-5 w-5 text-olive-600"></i><p class="mt-1 font-bold">${p.area}</p><p class="text-[11px] text-ink-mute">${t('sqm')}</p></div>
+        </div>
+        <p class="mt-5 text-[14px] leading-relaxed text-ink-soft">${t('m_desc')}</p>
+        <p class="mt-5 text-[12px] font-bold uppercase tracking-[.12em] text-ink-mute">${t('m_features')}</p>
+        <div class="mt-2 flex flex-wrap gap-2">${p.feats.map(f => `<span class="inline-flex items-center gap-1 rounded-full border border-line px-3 py-1.5 text-[12px] font-semibold"><i data-lucide="check" class="h-3.5 w-3.5 text-olive-600"></i>${t('feat_' + f)}</span>`).join('')}</div>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 md:mt-auto md:pt-6">
+          <button id="mBook" class="inline-flex items-center justify-center gap-2 rounded-xl bg-olive-600 px-5 py-3.5 text-[14px] font-bold text-white transition hover:bg-olive-700 active:scale-[.98]"><i data-lucide="calendar-check" class="h-4 w-4"></i>${t('m_book')}</button>
+          <button id="mCall" class="inline-flex items-center justify-center gap-2 rounded-xl border border-line px-5 py-3.5 text-[14px] font-bold transition hover:bg-ink hover:text-white hover:border-ink"><i data-lucide="phone" class="h-4 w-4"></i>${t('m_call')}</button>
+        </div>
+      </div>
+    </div>`;
+  icons();
+  const m = $('#modal');
+  m.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => {
+    $('#modalBg').classList.replace('opacity-0', 'opacity-100');
+    $('#modalPanel').classList.remove('translate-y-8', 'opacity-0');
+  });
+  $('#mClose').onclick = closeModal;
+  $('#mBook').onclick = () => { closeModal(); toast(t('toast_booked')); };
+  $('#mCall').onclick = () => toast(t('toast_call'));
+  $$('[data-thumb]', $('#modalPanel')).forEach(b => b.onclick = () => {
+    $('#mMain').src = IMG(b.dataset.thumb, 1400);
+    $$('[data-thumb]').forEach(x => { x.classList.remove('ring-olive-500'); x.classList.add('ring-transparent'); });
+    b.classList.add('ring-olive-500'); b.classList.remove('ring-transparent');
+  });
+}
+function closeModal() {
+  $('#modalBg').classList.replace('opacity-100', 'opacity-0');
+  $('#modalPanel').classList.add('translate-y-8', 'opacity-0');
+  setTimeout(() => { $('#modal').classList.add('hidden'); document.body.style.overflow = ''; }, 280);
+}
+
+/* =========================================================
+   SPOTLIGHT
+   ========================================================= */
+function renderSpot() {
+  const p = PROPS.find(x => x.id === SPOT_IDS[spotIdx]);
+  const box = $('#spotlight');
+  box.style.opacity = 0;
+  setTimeout(() => {
+    box.innerHTML = `
+      <div class="group relative overflow-hidden rounded-2xl aspect-[16/10]">
+        <img src="${IMG(p.img, 1000)}" class="h-full w-full object-cover transition duration-700 group-hover:scale-105" alt="${p.title}" />
+        <span class="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-olive-700">${t('type_' + p.type)}</span>
+      </div>
+      <div class="mt-4 flex-1 flex flex-col px-1">
+        <h3 class="text-xl font-bold tracking-tight">${p.title}</h3>
+        <p class="mt-1 flex items-center gap-1 text-[13px] text-ink-mute"><i data-lucide="map-pin" class="h-3.5 w-3.5"></i>${t('city_' + p.city)} · ${p.beds} ${t('beds').toLowerCase()} · ${p.area} ${t('sqm')}</p>
+        <div class="mt-auto pt-4 flex items-end justify-between gap-3">
+          <div><p class="text-[12px] text-ink-mute">${t('spot_from')}</p><p class="text-2xl font-extrabold tracking-tight">${short(p.price)}</p></div>
+          <button data-open="${p.id}" class="inline-flex items-center gap-1.5 rounded-full bg-olive-600 px-5 py-3 text-[13px] font-bold text-white transition hover:bg-olive-700 hover:gap-2.5">${t('btn_details')}<i data-lucide="arrow-right" class="h-4 w-4"></i></button>
+        </div>
+      </div>`;
+    $('#spotDots').innerHTML = SPOT_IDS.map((_, i) => `<button data-dot="${i}" aria-label="Slide ${i + 1}" class="h-1.5 rounded-full transition-all ${i === spotIdx ? 'w-6 bg-olive-600' : 'w-1.5 bg-line hover:bg-olive-300'}"></button>`).join('');
+    icons();
+    box.style.opacity = 1;
+  }, 180);
+}
+function spotGo(d) { spotIdx = (spotIdx + d + SPOT_IDS.length) % SPOT_IDS.length; renderSpot(); restartSpot(); }
+function restartSpot() { clearInterval(spotTimer); spotTimer = setInterval(() => { spotIdx = (spotIdx + 1) % SPOT_IDS.length; renderSpot(); }, 6000); }
+
+/* =========================================================
+   MAP
+   ========================================================= */
+let mapZoom = 1;
+function cityStats(c) {
+  const all = PROPS.filter(p => p.city === c);
+  const sale = all.filter(p => p.status === 'sale');
+  const avg = sale.length ? sale.reduce((s, p) => s + p.price, 0) / sale.length : 0;
+  const min = sale.length ? Math.min(...sale.map(p => p.price)) : 0;
+  const best = sale.slice().sort((a, b) => a.price / a.area - b.price / b.area)[0];
+  return { all, count: all.length, avg, min, best };
+}
+function renderMap() {
+  const pins = Object.entries(CITIES).map(([c, pos]) => {
+    const s = cityStats(c);
+    const on = c === selectedCity;
+    const label = `${t('city_' + c)} · ${t('map_from')} ${short(s.min)}`;
+    const w = label.length * 6.6 + 24;
+    return `<g data-city="${c}" transform="translate(${pos.x},${pos.y})" style="cursor:pointer">
+      ${on ? '<circle r="14" fill="#859752" class="pin-pulse"/>' : ''}
+      <circle r="${on ? 13 : 10}" fill="${on ? '#6C7C40' : '#FFFFFF'}" stroke="#6C7C40" stroke-width="3"/>
+      <circle r="4" fill="${on ? '#FFFFFF' : '#6C7C40'}"/>
+      <g transform="translate(${-w / 2},${-50})">
+        <rect width="${w}" height="30" rx="15" fill="${on ? '#16181A' : '#FFFFFF'}" stroke="${on ? '#16181A' : '#E6E6E0'}"/>
+        <text x="${w / 2}" y="19.5" text-anchor="middle" font-family="Manrope" font-size="12" font-weight="700" fill="${on ? '#FFFFFF' : '#16181A'}">${label}</text>
+      </g>
+    </g>`;
+  }).join('');
+  $('#pins').innerHTML = pins;
+
+  $('#regionChips').innerHTML = Object.keys(CITIES).map(c => {
+    const on = c === selectedCity;
+    return `<button data-region="${c}" class="shrink-0 rounded-full px-4 py-2 text-[13px] font-bold transition ${on ? 'bg-ink text-white' : 'bg-paper text-ink-soft hover:bg-olive-50'}">${t('city_' + c)}</button>`;
+  }).join('');
+
+  const s = cityStats(selectedCity);
+  const b = s.best;
+  $('#mapPanel').innerHTML = `
+    <p class="text-[12px] font-bold uppercase tracking-[.12em] text-ink-mute">${t('map_selected')}</p>
+    <p class="mt-1 text-2xl font-bold tracking-tight">${t('city_' + selectedCity)}</p>
+    <div class="mt-4 grid grid-cols-2 gap-2">
+      <div class="rounded-xl bg-white p-3"><p class="text-[12px] text-ink-mute">${t('map_listings')}</p><p class="text-xl font-extrabold">${s.count}</p></div>
+      <div class="rounded-xl bg-white p-3"><p class="text-[12px] text-ink-mute">${t('map_avg')}</p><p class="text-xl font-extrabold">${short(s.avg)}</p></div>
+    </div>
+    ${b ? `
+    <p class="mt-4 text-[12px] font-bold uppercase tracking-[.12em] text-ink-mute">${t('map_best')}</p>
+    <button data-open="${b.id}" class="mt-2 w-full flex items-center gap-3 rounded-xl bg-white p-2 text-left transition hover:shadow-soft hover:-translate-y-0.5">
+      <img src="${IMG(b.img, 300)}" class="h-14 w-16 rounded-lg object-cover" alt="" />
+      <span class="flex-1 min-w-0"><span class="block truncate font-bold text-[14px]">${b.title}</span><span class="block text-[12px] text-ink-mute">${money(Math.round(b.price / b.area))} / ${t('sqm')}</span></span>
+      <i data-lucide="chevron-right" class="h-4 w-4 text-ink-mute mr-1"></i>
+    </button>` : ''}
+    <button id="viewRegion" class="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-xl bg-olive-600 px-5 py-3 text-[14px] font-bold text-white transition hover:bg-olive-700">${t('btn_view_region')}<i data-lucide="arrow-right" class="h-4 w-4"></i></button>`;
+  icons();
+  $('#viewRegion').onclick = () => {
+    Object.assign(state, DEFAULT, { city: selectedCity, sort: state.sort });
+    $('#sCity').value = selectedCity;
+    renderTabs(); renderCatalog(); renderActive();
+    $('#catalog').scrollIntoView({ behavior: 'smooth' });
+  };
+}
+function applyZoom() {
+  const svg = $('#mapSvg');
+  const c = CITIES[selectedCity];
+  const w = 800 / mapZoom, h = 520 / mapZoom;
+  const x = Math.max(0, Math.min(800 - w, c.x - w / 2));
+  const y = Math.max(0, Math.min(520 - h, c.y - h / 2));
+  svg.setAttribute('viewBox', `${x} ${y} ${w} ${h}`);
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+function renderFaq() {
+  const openIdx = $$('.faq-item.open').map(el => +el.dataset.i);
+  $('#faqList').innerHTML = Array.from({ length: FAQ_N }, (_, i) => {
+    const open = openIdx.length ? openIdx.includes(i) : i === 0;
+    return `<div class="faq-item ${open ? 'open' : ''} rounded-[20px] bg-white border border-line/60 shadow-soft transition hover:border-olive-200" data-i="${i}">
+      <button class="faq-q w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left">
+        <span class="text-[15px] sm:text-[17px] font-bold">${t('q' + (i + 1))}</span>
+        <span class="faq-icon grid h-9 w-9 shrink-0 place-items-center rounded-full bg-paper transition duration-300"><i data-lucide="plus" class="h-4 w-4"></i></span>
+      </button>
+      <div class="faq-body"><div class="overflow-hidden"><p class="px-5 sm:px-6 pb-6 -mt-1 text-[14px] sm:text-[15px] leading-relaxed text-ink-mute max-w-2xl">${t('a' + (i + 1))}</p></div></div>
+    </div>`;
+  }).join('');
+  icons();
+}
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('.lang-btn');
+  if (langBtn) return setLang(langBtn.dataset.lang);
+
+  const like = e.target.closest('[data-like]');
+  if (like) {
+    e.stopPropagation();
+    const id = +like.dataset.like;
+    liked.has(id) ? (liked.delete(id), toast(t('toast_unlike'))) : (liked.add(id), toast(t('toast_like')));
+    const ic = like.querySelector('svg');
+    like.classList.toggle('text-red-500', liked.has(id));
+    like.classList.toggle('text-ink', !liked.has(id));
+    if (ic) ic.classList.toggle('fill-current', liked.has(id));
+    like.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.3)' }, { transform: 'scale(1)' }], { duration: 300 });
+    return;
+  }
+
+  const qv = e.target.closest('[data-qv]');
+  if (qv) { e.stopPropagation(); return openModal(qv.dataset.qv); }
+
+  const open = e.target.closest('[data-open]');
+  if (open) return openModal(open.dataset.open);
+
+  const tab = e.target.closest('[data-type]');
+  if (tab) { state.type = tab.dataset.type; $('#sType').value = state.type; renderTabs(); renderCatalog(); return; }
+
+  if (e.target.closest('.reset-btn')) return resetFilters();
+
+  const pin = e.target.closest('[data-city]') || e.target.closest('[data-region]');
+  if (pin) { selectedCity = pin.dataset.city || pin.dataset.region; renderMap(); if (mapZoom > 1) applyZoom(); return; }
+
+  const dot = e.target.closest('[data-dot]');
+  if (dot) { spotIdx = +dot.dataset.dot; renderSpot(); restartSpot(); return; }
+
+  const fq = e.target.closest('.faq-q');
+  if (fq) {
+    const item = fq.parentElement;
+    const was = item.classList.contains('open');
+    $$('.faq-item').forEach(x => x.classList.remove('open'));
+    if (!was) item.classList.add('open');
+  }
+});
+
+$('#modalBg').addEventListener('click', closeModal);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#modal').classList.contains('hidden')) closeModal(); });
+
+$('#spotPrev').onclick = () => spotGo(-1);
+$('#spotNext').onclick = () => spotGo(1);
+$('#zoomIn').onclick = () => { mapZoom = Math.min(2.2, mapZoom + 0.4); applyZoom(); };
+$('#zoomOut').onclick = () => { mapZoom = Math.max(1, mapZoom - 0.4); applyZoom(); };
+
+$$('.deal-btn').forEach(b => b.addEventListener('click', () => {
+  deal = b.dataset.deal;
+  $$('.deal-btn').forEach(x => {
+    const on = x === b;
+    x.classList.toggle('bg-ink', on); x.classList.toggle('text-white', on); x.classList.toggle('text-ink-soft', !on);
+  });
+}));
+
+$('#heroSearch').addEventListener('submit', (e) => {
+  e.preventDefault();
+  Object.assign(state, {
+    status: deal,
+    city: $('#sCity').value,
+    type: $('#sType').value,
+    budget: $('#sBudget').value,
+    rooms: +$('#sRooms').value
+  });
+  renderTabs(); renderCatalog(); renderActive();
+  $('#catalog').scrollIntoView({ behavior: 'smooth' });
+});
+
+$('#sortSel').addEventListener('change', e => { state.sort = e.target.value; renderCatalog(); });
+
+$('#newsForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const v = $('#newsEmail').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+    $('#newsEmail').animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], { duration: 300 });
+    return toast(t('toast_invalid'));
+  }
+  $('#newsEmail').value = '';
+  toast(t('toast_sub'));
+});
+
+$('#ctaStart').addEventListener('click', (e) => {
+  e.preventDefault();
+  $('#heroSearch').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => $('#sCity').focus({ preventScroll: true }), 600);
+});
+
+// Mobile menu
+$('#burger').onclick = () => $('#mobileMenu').classList.toggle('hidden');
+$$('.m-link').forEach(a => a.addEventListener('click', () => $('#mobileMenu').classList.add('hidden')));
+
+// Header on scroll
+window.addEventListener('scroll', () => {
+  $('#headerBar').classList.toggle('shadow-lift', window.scrollY > 20);
+}, { passive: true });
+
+/* =========================================================
+   OBSERVERS: reveal + counters
+   ========================================================= */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+$$('.reveal').forEach(el => io.observe(el));
+
+const co = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target, end = +el.dataset.count, suf = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1600;
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(end * eased).toLocaleString('en-US') + suf;
+      if (k < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    co.unobserve(el);
+  });
+}, { threshold: 0.5 });
+$$('[data-count]').forEach(el => co.observe(el));
+
+/* =========================================================
+   INIT
+   ========================================================= */
+$('#year').textContent = new Date().getFullYear();
+applyI18n();
+restartSpot();
+icons();
+</script>
+</body>
+</html>

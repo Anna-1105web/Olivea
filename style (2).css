@@ -1,0 +1,37 @@
+/* Olivea Estates — custom styles (used together with Tailwind CDN) */
+  body { font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #D3DCB0; color: #16181A; }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: .08s; } .reveal-d2 { transition-delay: .16s; } .reveal-d3 { transition-delay: .24s; }
+
+  /* Card entrance */
+  @keyframes cardIn { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: none; } }
+  .card-in { animation: cardIn .55s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* Hero zoom */
+  @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+  .hero-zoom { animation: heroZoom 2.4s cubic-bezier(.2,.7,.2,1) both; }
+
+  /* Map pin pulse */
+  @keyframes pulse-ring { 0% { r: 14; opacity: .55; } 100% { r: 34; opacity: 0; } }
+  .pin-pulse { animation: pulse-ring 1.8s ease-out infinite; }
+
+  /* FAQ accordion */
+  .faq-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .4s ease; }
+  .faq-item.open .faq-body { grid-template-rows: 1fr; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: #6C7C40; color: #fff; }
+
+  /* Selects */
+  select { -webkit-appearance: none; appearance: none; }
+
+  /* Hide scrollbar for snap rows */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+
+  /* Spotlight fade */
+  .fade-swap { transition: opacity .35s ease; }
+
+  .toast-show { opacity: 1 !important; transform: translate(-50%, 0) !important; }
